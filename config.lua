@@ -20,7 +20,7 @@ Config.VersionCheck = {
     checkOnStart = true,
     url         = 'https://raw.githubusercontent.com/Distortionzz/Distortionz_Trucking/main/version.json',
 }
-Config.CurrentVersion = '1.0.0'
+Config.CurrentVersion = '1.0.9'
 
 -- ─── Depot ──────────────────────────────────────────────────────────
 -- Where players go to start a trucking run. Default: industrial area
