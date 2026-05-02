@@ -1,0 +1,6 @@
+{
+    "version": "1.0.9",
+    "name": "distortionz_trucking",
+    "download": "https://github.com/Distortionzz/Distortionz_Trucking",
+    "changelog": "v1.0.9 — Expanded NUI panel with full cargo manifest section featuring emojis. Players now see manifest ID, container number, gross weight, shipper, and consignee live in their HUD alongside the cargo and drop-off info. The ultimate trucking script HUD."
+}

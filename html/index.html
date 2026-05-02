@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Distortionz Trucking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="truckingPanel" class="contract-panel hidden">
+        <div class="panel-header">
+            <span class="contract-tag">
+                <i class="dot"></i>
+                <span class="tag-text">TRUCKING RUN</span>
+            </span>
+            <span id="contractTimer" class="contract-timer">00:00</span>
+        </div>
+
+        <div class="panel-stage">
+            <div class="stage-pill" id="stagePill">
+                <span class="stage-label" id="stageLabel">PICKUP</span>
+            </div>
+            <span class="stage-hint" id="stageHint">Back the truck into the trailer</span>
+        </div>
+
+        <div class="panel-body">
+            <div class="target-row primary">
+                <span class="row-label"><span class="emoji">📦</span> Cargo</span>
+                <span class="row-value" id="cargoName"><span id="cargoIcon"></span> —</span>
+            </div>
+            <div class="target-row">
+                <span class="row-label"><span class="emoji">📍</span> Drop-off</span>
+                <span class="row-value" id="dropoffName">—</span>
+            </div>
+        </div>
+
+        <div class="manifest-section">
+            <div class="section-title">
+                <span class="emoji">🟡</span> MANIFEST
+            </div>
+            <div class="manifest-grid">
+                <div class="m-row">
+                    <span class="m-label"><span class="emoji">🆔</span> ID</span>
+                    <span class="m-value mono" id="manifestId">—</span>
+                </div>
+                <div class="m-row">
+                    <span class="m-label"><span class="emoji">📋</span> Container</span>
+                    <span class="m-value mono" id="containerNumber">—</span>
+                </div>
+                <div class="m-row">
+                    <span class="m-label"><span class="emoji">⚖️</span> Weight</span>
+                    <span class="m-value" id="grossWeight">—</span>
+                </div>
+                <div class="m-row">
+                    <span class="m-label"><span class="emoji">🏢</span> Shipper</span>
+                    <span class="m-value" id="shipperName">—</span>
+                </div>
+                <div class="m-row">
+                    <span class="m-label"><span class="emoji">🏪</span> Consignee</span>
+                    <span class="m-value" id="consigneeName">—</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-footer">
+            <span class="payout-label"><span class="emoji">💰</span> Reward</span>
+            <strong id="payoutValue">$0</strong>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
