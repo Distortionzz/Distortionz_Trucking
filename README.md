@@ -1,7 +1,7 @@
 # 🚛💨 Distortionz Trucking
 
 **Premium freight trucking job for FiveM / Qbox.**
-A polished script where players take freight contracts from a depot dispatcher, hook up a real trailer with a real truck, deliver weighted cargo across the map, and earn clean money — complete with cargo manifest paperwork for police pull-overs.
+A polished, feature-rich script where players take freight contracts from a depot dispatcher, hook up a real trailer with a real truck, deliver weighted cargo across the map, and earn clean money — complete with cargo manifest paperwork for police pull-overs.
 
 ---
 
