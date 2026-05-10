@@ -105,6 +105,12 @@ local function SpawnDepotPed()
     SetBlockingOfNonTemporaryEvents(depotPed, true)
     FreezeEntityPosition(depotPed, true)
 
+    -- v1.1.0 — Distortionz convention: flag as protected so other scripts
+    -- (distortionz_robped, etc.) skip this ped for player interactions.
+    Entity(depotPed).state:set('distortionz_protected_ped', true, true)
+    Entity(depotPed).state:set('distortionz_contact_ped',   true, true)
+    Entity(depotPed).state:set('distortionz_depot_ped',     true, true)
+
     if Config.Depot.scenario then
         TaskStartScenarioInPlace(depotPed, Config.Depot.scenario, 0, true)
     end

@@ -2,7 +2,7 @@ Config = {}
 
 Config.Script = {
     name    = 'Distortionz Trucking',
-    version = '1.0.9',
+    version = '1.1.3',
 }
 
 Config.Debug = false
@@ -20,13 +20,13 @@ Config.VersionCheck = {
     checkOnStart = true,
     url         = 'https://raw.githubusercontent.com/Distortionzz/Distortionz_Trucking/main/version.json',
 }
-Config.CurrentVersion = '1.0.9'
+Config.CurrentVersion = '1.1.3'
 
 -- ─── Depot ──────────────────────────────────────────────────────────
 -- Where players go to start a trucking run. Default: industrial area
 -- behind the LSIA / Cypress Flats freight depot.
 Config.Depot = {
-    coords = vec4(925.45, -2245.30, 30.47, 358.0),
+    coords = vec4(930.52, -2267.17, 29.51, 90.0),
     model  = 's_m_y_construct_01',
     scenario = 'WORLD_HUMAN_CLIPBOARD',
 
