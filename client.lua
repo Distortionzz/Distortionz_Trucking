@@ -324,20 +324,31 @@ CreateThread(function()
         then
             sleep = 500
 
-            -- Single deterministic check: is the trailer entity literally
-            -- attached to the truck entity? Only fires after the 5th wheel
-            -- physically snaps from a real backup hookup.
-            local attachedTo = GetEntityAttachedTo(trailerEntity)
+            -- Destruction check (pre-hookup) — if either vehicle is wrecked
+            -- before the player can attach the trailer, kill the job rather
+            -- than leaving them with a smoking shell at the depot.
+            if IsEntityDead(trailerEntity) then
+                TriggerServerEvent('distortionz_trucking:server:cancelJob', 'Trailer destroyed.')
+                EndJob('Trailer destroyed before hookup. Run cancelled.', 'error')
+            elseif IsEntityDead(truckEntity) then
+                TriggerServerEvent('distortionz_trucking:server:cancelJob', 'Truck destroyed.')
+                EndJob('Truck destroyed before hookup. Run cancelled.', 'error')
+            else
+                -- Single deterministic check: is the trailer entity literally
+                -- attached to the truck entity? Only fires after the 5th wheel
+                -- physically snaps from a real backup hookup.
+                local attachedTo = GetEntityAttachedTo(trailerEntity)
 
-            if attachedTo == truckEntity then
-                activeJob.attached = true
+                if attachedTo == truckEntity then
+                    activeJob.attached = true
 
-                if pickupBlip and DoesBlipExist(pickupBlip) then
-                    RemoveBlip(pickupBlip); pickupBlip = nil
+                    if pickupBlip and DoesBlipExist(pickupBlip) then
+                        RemoveBlip(pickupBlip); pickupBlip = nil
+                    end
+
+                    ShowDropoffBlip()
+                    Notify(('Trailer hooked. Deliver to %s.'):format(activeJob.dropoff.label), 'success', 6000)
                 end
-
-                ShowDropoffBlip()
-                Notify(('Trailer hooked. Deliver to %s.'):format(activeJob.dropoff.label), 'success', 6000)
             end
         end
 
@@ -357,8 +368,20 @@ CreateThread(function()
             local d = activeJob.dropoff.coords
             local dDist = #(pCoords - vec3(d.x, d.y, d.z))
 
+            -- Destruction check — cancel the run if either the truck or the
+            -- trailer is wrecked. IsEntityDead returns true once a vehicle
+            -- is totalled (engine + body health bottomed out, smoking shell).
+            -- Trailer is checked first since the cargo is the whole job.
+            if trailerEntity and DoesEntityExist(trailerEntity) and IsEntityDead(trailerEntity) then
+                TriggerServerEvent('distortionz_trucking:server:cancelJob', 'Trailer destroyed.')
+                EndJob('Trailer destroyed. Run cancelled.', 'error')
+            elseif truckEntity and DoesEntityExist(truckEntity) and IsEntityDead(truckEntity) then
+                TriggerServerEvent('distortionz_trucking:server:cancelJob', 'Truck destroyed.')
+                EndJob('Truck destroyed. Run cancelled.', 'error')
+            end
+
             -- Abandonment check
-            if trailerEntity and DoesEntityExist(trailerEntity) then
+            if activeJob and trailerEntity and DoesEntityExist(trailerEntity) then
                 local tCoords = GetEntityCoords(trailerEntity)
                 local pToTrailer = #(pCoords - tCoords)
                 if pToTrailer > Config.Job.abandonDistance and not IsPedInAnyVehicle(ped, false) then

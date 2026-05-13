@@ -2,7 +2,7 @@ Config = {}
 
 Config.Script = {
     name    = 'Distortionz Trucking',
-    version = '1.1.3',
+    version = '1.1.4',
 }
 
 Config.Debug = false
@@ -20,7 +20,7 @@ Config.VersionCheck = {
     checkOnStart = true,
     url         = 'https://raw.githubusercontent.com/Distortionzz/Distortionz_Trucking/main/version.json',
 }
-Config.CurrentVersion = '1.1.3'
+Config.CurrentVersion = '1.1.4'
 
 -- ─── Depot ──────────────────────────────────────────────────────────
 -- Where players go to start a trucking run. Default: industrial area

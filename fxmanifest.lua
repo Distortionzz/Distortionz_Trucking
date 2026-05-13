@@ -4,7 +4,7 @@ lua54 'yes'
 
 author 'Distortionz'
 description 'Distortionz Trucking — depot ped trucking job with realistic trailer hookup and tiered cargo payouts.'
-version '1.1.3'
+version '1.1.4'
 repository 'https://github.com/Distortionzz/Distortionz_Trucking'
 
 ui_page 'html/index.html'
