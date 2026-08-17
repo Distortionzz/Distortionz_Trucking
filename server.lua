@@ -328,3 +328,14 @@ AddEventHandler('playerDropped', function()
     activeJobs[src] = nil
     cooldowns[src]  = nil
 end)
+
+CreateThread(function()
+    Wait(1000)
+    print(('^5[%s]^7 ^2v%s loaded — cargo=%d dropoffs=%d manifest=%s^7'):format(
+        Config.Script.name,
+        Config.CurrentVersion,
+        #Config.Cargo,
+        #Config.Dropoffs,
+        tostring(Config.Manifest.enabled)
+    ))
+end)
